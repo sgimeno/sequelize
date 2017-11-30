@@ -26,6 +26,14 @@ describe(Support.getTestDialectTeaser('Model'), () => {
       expect(Model.rawAttributes.updated_at).not.to.be.defined;
     });
 
+    it('should allow property called attributes', () => {
+      const Model = current.define('User', {
+        attributes: DataTypes.STRING
+      });
+
+      expect(Model.rawAttributes.attributes).to.be.defined;
+    });
+
     it('should throw when id is added but not marked as PK', () => {
       expect(() => {
         current.define('foo', {
